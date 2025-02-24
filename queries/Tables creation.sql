@@ -73,13 +73,14 @@ create table Quest_Exam
 create table take_exam
 (
 	St_ID varchar(20),
-	Crs_ID varchar(20),
+	Q_ID varchar(20),
 	E_ID varchar(20),
 	St_Answer varchar(150),
 	St_Grade decimal(10,2) default 0,
-	constraint [std exm pk] primary key (St_ID,E_ID),
-	constraint [std fk2] foreign key (St_ID) references Student(ID) on update cascade on delete cascade,
-	constraint [crs fk3] foreign key (Crs_ID) references Course(ID) on update cascade on delete cascade,
-	constraint [exm fk2] foreign key (E_ID) references Exam(ID) on update cascade on delete cascade,
+	constraint [std exm pk2] primary key (St_ID,E_ID),
+	constraint [std fk3] foreign key (St_ID) references Student(ID) on update cascade on delete cascade,
+	constraint [Q fk1] foreign key (Q_ID) references Question(ID) on update cascade on delete cascade,
+	constraint [exm fk3] foreign key (E_ID) references Exam(ID) on update cascade on delete cascade,
 )
 
+drop table take_exam
